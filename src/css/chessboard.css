@@ -1,0 +1,149 @@
+/* ---------- board colors per theme ---------- */
+/* light = chess.com default green; every other theme gets its own board */
+
+:root,
+:root[data-theme='light'] {
+  --square-light: #ebecd0;
+  --square-dark: #739552;
+  --square-selected: #f5f682;
+}
+
+/* dark: cool steel blue */
+:root[data-theme='dark'] {
+  --square-light: #dee3e6;
+  --square-dark: #6f8ba7;
+  --square-selected: #e8d96a;
+}
+
+/* linen: classic wood */
+:root[data-theme='linen'] {
+  --square-light: #f0d9b5;
+  --square-dark: #b58863;
+  --square-selected: #dfd36b;
+}
+
+/* fjord: misty slate */
+:root[data-theme='fjord'] {
+  --square-light: #e3e9ec;
+  --square-dark: #7b97a3;
+  --square-selected: #d9e07c;
+}
+
+/* matte: sand and clay */
+:root[data-theme='matte'] {
+  --square-light: #e7ddd0;
+  --square-dark: #a3886f;
+  --square-selected: #d8cc6c;
+}
+
+/* charcoal: graphite */
+:root[data-theme='charcoal'] {
+  --square-light: #b8b8b8;
+  --square-dark: #5c5c5c;
+  --square-selected: #c9b75a;
+}
+
+/* paper: newsprint black & white */
+:root[data-theme='paper'] {
+  --square-light: #f7f7f7;
+  --square-dark: #a3a3a3;
+  --square-selected: #e3dd86;
+}
+
+/* ---------- board ---------- */
+
+.chessboard-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* dragging a piece on a phone must not scroll the page */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.chess-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.chess-square.light { background-color: var(--square-light); }
+.chess-square.dark { background-color: var(--square-dark); }
+
+.chess-square:focus-visible {
+  outline-offset: -3px;
+}
+
+/* square under the dragged piece */
+.chess-square.drag-over {
+  box-shadow: inset 0 0 0 4px rgb(255 255 255 / 0.65);
+}
+
+/* hand cursor over pieces you can pick up, closed hand while holding one */
+.chess-square.can-grab {
+  cursor: grab;
+}
+
+html.piece-grabbing,
+html.piece-grabbing * {
+  cursor: grabbing !important;
+}
+
+.chess-piece {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* faint copy left on the square the piece was lifted from */
+.piece-dragging {
+  opacity: 0.25;
+}
+
+/* the lifted piece, floating under the pointer */
+.chess-ghost {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  user-select: none;
+  scale: 1.08;
+  filter: drop-shadow(0 8px 10px rgb(0 0 0 / 0.35));
+  animation: piece-lift 0.08s ease-out;
+}
+
+@keyframes piece-lift {
+  from { scale: 1; filter: drop-shadow(0 0 0 rgb(0 0 0 / 0)); }
+}
+
+/* bigger on touch screens so the finger doesn't hide it */
+@media (pointer: coarse) {
+  .chess-ghost {
+    scale: 1.6;
+    translate: 0 -40%;
+  }
+
+  @keyframes piece-lift {
+    from { scale: 1; translate: 0 0; }
+  }
+}
+
+.piece-rotated {
+  transform: rotate(180deg);
+}

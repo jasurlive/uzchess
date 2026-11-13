@@ -1,0 +1,169 @@
+/* ---------- player bars (above / below the board) ---------- */
+
+.player-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: var(--bar-h);
+  min-width: 0;
+}
+
+/* 2 sides mode: the top bar faces the player across the table */
+.player-rotated {
+  transform: rotate(180deg);
+}
+
+.player-avatar {
+  flex-shrink: 0;
+  width: var(--bar-h);
+  height: var(--bar-h);
+  padding: 0.2rem;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.player-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.player-to-move {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.player-taken {
+  display: flex;
+  align-items: center;
+  height: 1.1rem;
+  overflow: hidden;
+}
+
+.player-taken img {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: -0.35rem; /* overlap like a stack of captured pieces */
+}
+
+.player-lead {
+  margin-left: 0.55rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ---------- clock ---------- */
+
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  min-width: 6.5rem;
+  height: 100%;
+  padding: 0 0.75rem;
+  border-radius: 6px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+  transition: opacity 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.clock-white {
+  background: #e8e8e6;
+  color: #26241f;
+}
+
+.clock-black {
+  background: #26241f;
+  color: #e8e8e6;
+  border: 1px solid var(--border);
+}
+
+.clock.is-active {
+  opacity: 1;
+}
+
+.clock-white.is-active {
+  background: #ffffff;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.clock-black.is-active {
+  background: #141310;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.clock.is-low {
+  background: #c62f2f;
+  color: #fff;
+  box-shadow: 0 0 0 2px #c62f2f;
+}
+
+.clock.is-flagged {
+  opacity: 1;
+  background: var(--danger);
+  color: #fff;
+}
+
+.clock-icon {
+  font-size: 0.9rem;
+  animation: clock-spin 2s steps(8) infinite;
+}
+
+@keyframes clock-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- time control picker (sidebar) ---------- */
+
+.time-control {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.35rem;
+}
+
+.time-control .page-button {
+  padding: 0.4rem 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .player-bar {
+    gap: 0.45rem;
+  }
+
+  .player-name {
+    font-size: 0.8rem;
+  }
+
+  .player-taken img {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .clock {
+    min-width: 5.25rem;
+    padding: 0 0.55rem;
+    font-size: 1.1rem;
+  }
+}
