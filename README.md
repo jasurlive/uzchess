@@ -1,13 +1,9 @@
 # uzchess
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/896267fc-ba9f-470d-be0d-86eae640cc22" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/b7b92ea8-df51-463f-93f3-fafd134afce2" />
-
-## mobile view:
-<img width="120" alt="image" src="https://github.com/user-attachments/assets/dd137991-416a-4418-8c52-f290de7df740" />
-
 ## yes, another chess app
+built on my [django-react](https://github.com/jasurlive/django-react) template.
 
-built on my [django-react](https://github.com/jasurlive/django-react) template (front part).
+<img width="60%" alt="image" src="https://github.com/user-attachments/assets/90cbdef2-1ecd-4824-85bc-cfe31e8fa748" />
+<img width="30%" alt="image" src="https://github.com/user-attachments/assets/031f748a-9f76-43c6-b78c-df15b95e093b" />
 
 ---
 
