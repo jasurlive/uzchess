@@ -1,6 +1,6 @@
 # uzchess
-## yes, another chess app
-built on my [django-react](https://github.com/jasurlive/django-react) template.
+
+## you have only one device but you wanna play chess with your friend/wife/kids...? no problem, we turn the chessboard for you after each move ^^
 
 <img width="60%" alt="image" src="https://github.com/user-attachments/assets/90cbdef2-1ecd-4824-85bc-cfe31e8fa748" />
 <img width="30%" alt="image" src="https://github.com/user-attachments/assets/031f748a-9f76-43c6-b78c-df15b95e093b" />
@@ -22,26 +22,10 @@ built on my [django-react](https://github.com/jasurlive/django-react) template.
 
 ## stack
 
-* react 19 + typescript
+* react + typescript
 * vite 8, react router
 * chess.js for the rules
-* [django-react](https://github.com/jasurlive/django-react) template, `front/` only
-
----
-
-## template
-
-the app shell comes from [jasurlive/django-react](https://github.com/jasurlive/django-react) (`front/` folder) and keeps the same folder layout, so template updates can be brought over file by file (`Menu.tsx`, `Info.tsx` and `page.css` have chess additions, merge those instead of overwriting):
-
-* `src/app/`: entry + routes
-* `src/shared/Menu.tsx`, `src/css/menu.css`: glass sidebar on desktop, floating bar on phones, `` ` `` collapses it
-* `src/css/theme.css`, `src/lib/themes.ts`, `hooks/LOCAL/useTheme.ts`: 7 themes (light, dark, linen, fjord, matte, charcoal, paper), `Ctrl+J` cycles them
-* `src/pages/Settings.tsx`, `src/pages/Info.tsx`: theme picker, fullscreen, shortcuts
-* `src/components/Layout.tsx`, `ErrorBoundary.tsx`, `hooks/LOCAL/useFullscreen.ts`, `useShortcuts.ts`, `src/css/reset.css`, `page.css`
-
-the chess parts are this repo's own: board, clocks, PGN, game pages, and the board colors for each theme (`src/css/chessboard.css`, light = chess.com green).
-
-the backend and bot from the template are not used, this app runs fully in the browser.
+* built on [django-react](https://github.com/jasurlive/django-react) template, `front/` only
 
 ---
 
@@ -54,8 +38,6 @@ cp .env.example .env # optional: VITE_ENABLE_EXTRA_THEMES=false keeps only light
 npm install
 npm run dev          # http://localhost:1212
 ```
-
-needs node 20.19+ or 22.12+. `npm run build` puts the site in `dist/`.
 
 ---
 
@@ -82,6 +64,7 @@ simple, minimal
 * [ ] online multiplayer
 * [ ] better ui
 * [ ] adding stockfish
+
 ---
 
 ## contributing
