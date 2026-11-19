@@ -45,9 +45,9 @@
 
 /* paper: newsprint black & white */
 :root[data-theme='paper'] {
-  --square-light: #f7f7f7;
-  --square-dark: #a3a3a3;
-  --square-selected: #e3dd86;
+  --square-light: #ebecd0;
+  --square-dark: #739552;
+  --square-selected: #f5f682;
 }
 
 /* ---------- board ---------- */
@@ -55,7 +55,7 @@
 .chessboard-wrapper {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 6px;
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: var(--shadow);
 }
